@@ -1,0 +1,28 @@
+#!/bin/bash 
+
+LOGFILE="${LOGDIR}/filebench_bankshot"
+
+# stats are saved in .stats file 
+STATSFILE="${LOGFILE}"
+
+${BEE3HOME}/Tools/BEE3/library/scripts/Cache/resetcache
+sleep 2
+export TIMESTATS=`ls /proc/Monetaa/time_*` 
+for stats in $TIMESTATS; do echo 0 > $stats; done
+
+. mount_fs /dev/monetaa
+
+echo "Starting run"
+
+echo "----------------PRERUN---------------------" >> ${STATSFILE}
+. disk_stats
+. moneta_dev_stats 
+
+sync; sudo /x/SC2010/scripts/flush_cache >> ${QUIET} 
+sleep 2
+${BEE3HOME}/Workloads/filebench-1.4.9.1/filebench -f filebench_models/${WORKLOAD}.f -l moneta >> ${LOGFILE} 2>>${LOGFILE}
+
+echo "----------------POSTRUN---------------------" >> ${STATSFILE}
+. disk_stats
+. moneta_dev_stats
+. moneta_cache_stats
