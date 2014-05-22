@@ -14,14 +14,11 @@ export WORKLOADS="fileserver varmail webproxy webserver videoserver"
 #	. filebench_flashcache
 #done
 
-export ENABLE_MONETA_CACHE=1
-export HW_DIRTY=1
-export ASYNC_WB=1
-export FMAP="inode"
-export LOG="filebench_bankshot"
-. xdd_setup_cache 
+export LOG="filebench_bankshot2"
+
+#. xdd_setup_cache 
 for WORKLOAD in ${WORKLOADS}; do
-	echo "Filebench workload ${WORKLOAD} running with bankshot"
-	. filebench_bankshot 
+	echo "Filebench workload ${WORKLOAD} running with bankshot2"
+	. filebench_bankshot2 
 
 done
