@@ -1,0 +1,27 @@
+#!/bin/bash 
+
+# Run filebench on disk, flashcache and mcache 
+
+export WORKLOADS="fileserver varmail webproxy webserver videoserver"
+
+#for WORKLOAD in ${WORKLOADS}; do
+#	echo "Filebench workload ${WORKLOAD} running on disk"
+#	. filebench_disk 	
+#done
+#
+#for WORKLOAD in ${WORKLOADS}; do
+#	echo "Filebench workload ${WORKLOAD} running with flashcache"
+#	. filebench_flashcache
+#done
+
+export ENABLE_MONETA_CACHE=1
+export HW_DIRTY=1
+export ASYNC_WB=1
+export FMAP="inode"
+export LOG="filebench_bankshot"
+. xdd_setup_cache 
+for WORKLOAD in ${WORKLOADS}; do
+	echo "Filebench workload ${WORKLOAD} running with bankshot"
+	. filebench_bankshot 
+
+done

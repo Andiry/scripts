@@ -1,0 +1,39 @@
+#!/bin/bash 
+
+. config_common 
+
+export BACKING_STORE="sdb sdc"
+export SCHEDULER=noop
+export CACHE_DEV_NAME=monetaa
+export BACKING_DEV_NAME=md0
+
+LOGFILE="${LOGDIR}/filebench_flashcache_${WORKLOAD}"
+
+# stats are saved in .stats file 
+STATSFILE="${LOGFILE}.stats"
+
+. config_backing_store
+
+. setup_raid
+
+. setup_ramdisk
+
+. load_moneta_driver
+
+. setup_flashcache back 4k 
+
+. mount_fs /dev/mapper/cachedev
+
+echo "----------------PRERUN---------------------" > ${STATSFILE}
+. system_stats
+. disk_stats
+. flashcache_stats
+
+sudo /x/SC2010/scripts/flush_cache >> ${QUIET} 
+
+${BEE3HOME}/Workloads/filebench-1.4.9.1/filebench -f filebench_models/${WORKLOAD}.f >${LOGFILE} 2>${QUIET}
+
+echo "----------------POSTRUN---------------------" >> ${STATSFILE}
+. system_stats
+. disk_stats
+. flashcache_stats
