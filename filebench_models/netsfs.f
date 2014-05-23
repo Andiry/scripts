@@ -26,7 +26,7 @@
 # $nfiles - number of data files
 # $nthreads - number of worker threads
 
-set $dir=/mnt/beecube
+set $dir=/mnt/ramdisk
 set $cached=false
 set $eventrate=10
 set $meandirwidth=20

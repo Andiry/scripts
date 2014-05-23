@@ -2,7 +2,7 @@
 
 # Run filebench on disk, flashcache and mcache 
 
-export WORKLOADS="fileserver varmail webproxy webserver videoserver"
+export WORKLOADS="fileserver varmail webproxy webserver"
 
 #for WORKLOAD in ${WORKLOADS}; do
 #	echo "Filebench workload ${WORKLOAD} running on disk"

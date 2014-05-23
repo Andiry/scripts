@@ -23,8 +23,8 @@
 # Use is subject to license terms.
 #
 
-set $dir=/mnt/beecube
-set $nfiles=10000
+set $dir=/mnt/ramdisk
+set $nfiles=1000
 set $meandirwidth=20
 set $meanfilesize=128k
 set $nthreads=50

@@ -33,7 +33,7 @@
 # 10 seconds. Thus the write bandwidth will be set as $filesize/$repintval.
 #
 
-set $dir=/mnt/beecube
+set $dir=/mnt/ramdisk
 set $eventrate=500
 set $filesize=100m
 set $nthreads=16

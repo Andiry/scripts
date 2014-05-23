@@ -29,7 +29,7 @@
 # $nshadows - number of shadow processes
 # $ndbwriters - number of database writers
 
-set $dir=/mnt/beecube
+set $dir=/mnt/ramdisk
 set $eventrate=0
 set $iosize=4k
 set $nshadows=200
