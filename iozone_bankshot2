@@ -1,0 +1,17 @@
+#!/bin/bash 
+
+LOGDIR="log"
+
+LOGFILE="${LOGDIR}/iozone_bankshot2"
+
+#. mount_fs /dev/monetaa
+
+#. xdd_setup_cache 
+echo "IoZone running with bankshot2"
+echo "Starting run"
+
+sync
+sleep 2
+./run_bankshot2 ~/benchmarks/iozone3_424/src/current/iozone -f /mnt/ramdisk/test1 -a -g 1G -i 0 -i 1 >> ${LOGFILE} 
+
+
