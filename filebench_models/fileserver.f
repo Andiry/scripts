@@ -50,7 +50,7 @@ define process name=filereader,instances=1
     flowop statfile name=statfile1,filesetname=bigfileset
   }
 }
-run 60
+run 20
 echo  "File-server Version 3.0 personality successfully loaded"
 usage "Usage: set \$dir=<dir>"
 usage "       set \$meanfilesize=<size>     defaults to $meanfilesize"

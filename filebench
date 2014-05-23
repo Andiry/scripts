@@ -1,24 +1,22 @@
 #!/bin/bash 
 
-# Run filebench on disk, flashcache and mcache 
+#export WORKLOADS="fileserver varmail webproxy webserver"
+WORKLOADS="fileserver"
 
-export WORKLOADS="fileserver varmail webproxy webserver"
+LOGDIR="log"
 
-#for WORKLOAD in ${WORKLOADS}; do
-#	echo "Filebench workload ${WORKLOAD} running on disk"
-#	. filebench_disk 	
-#done
-#
-#for WORKLOAD in ${WORKLOADS}; do
-#	echo "Filebench workload ${WORKLOAD} running with flashcache"
-#	. filebench_flashcache
-#done
+LOGFILE="${LOGDIR}/filebench"
 
-export LOG="filebench_bankshot2"
+#. mount_fs /dev/monetaa
 
 #. xdd_setup_cache 
 for WORKLOAD in ${WORKLOADS}; do
-	echo "Filebench workload ${WORKLOAD} running with bankshot2"
-	. filebench_bankshot2 
+	echo "Filebench workload ${WORKLOAD}"
+	echo "Starting run"
+
+	sync
+	sleep 2
+	~/benchmarks/filebench-1.4.9.1/filebench -f filebench_models/${WORKLOAD}.f >> ${LOGFILE} 
 
 done
+
