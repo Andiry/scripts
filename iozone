@@ -12,6 +12,7 @@ echo "Starting run"
 
 sync
 sleep 2
-~/benchmarks/iozone3_424/src/current/iozone -f /mnt/ramdisk/test1 -a -g 1G -i 0 -i 1 >> ${LOGFILE} 
+~/benchmarks/iozone3_424/src/current/iozone -f /mnt/ramdisk/test1 -w -+N -r 4k -s 1g -i 0 -i 1  
+#~/benchmarks/iozone3_424/src/current/iozone -f /mnt/ramdisk/test1 -a -w -r 4k -s 1g -i 0 -i 1  
 
 
