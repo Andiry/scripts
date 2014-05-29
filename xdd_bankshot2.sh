@@ -21,7 +21,7 @@ echo "xdd: Workload ${WORKLOAD_SIZE}MB, Reqsize ${REQ_SIZE}, File range ${FILE_R
 
 XDDEXEC=~/benchmarks/xdd/bin/xdd.linux
 
-XDDFLAGS="-mbytes ${WORKLOAD_SIZE} -minall -verbose -noproclock -nomemlock -runtime 0 -reqsize 1 -blocksize ${REQ_SIZE} -timelimit 0 -seek random -seek range ${FILE_RANGE} -seek seed 333 -queuedepth ${THREAD} -passes 5"
+XDDFLAGS="-mbytes ${WORKLOAD_SIZE} -minall -verbose -noproclock -nomemlock -runtime 0 -reqsize 1 -blocksize ${REQ_SIZE} -timelimit 0 -seek random -seek range ${FILE_RANGE} -seek seed 333 -queuedepth ${THREAD} -passes 10"
 
 ./run_bankshot2 ${XDDEXEC} ${XDDFLAGS} -targets 1 /mnt/ramdisk/test1 -rwratio ${RWRATIO} | tee ${LOGFILE}
 
