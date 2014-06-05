@@ -27,7 +27,8 @@ XDDFLAGS="-mbytes ${WORKLOAD_SIZE} -minall -verbose -noproclock -nomemlock -runt
 
 for RWRATIO in ${RWRATIOS}; do
 for CYCLE in ${CYCLES}; do
-echo "xdd: Workload ${WORKLOAD_SIZE}MB, Reqsize ${REQ_SIZE}, File range ${FILE_RANGE}MB, Thread ${THREAD}, RWratio ${RWRATIO}"  
+echo "xdd: Workload ${WORKLOAD_SIZE}MB, Reqsize ${REQ_SIZE}, File range ${FILE_RANGE}MB, Thread ${THREAD}, RWratio ${RWRATIO}" 
+#~/bankshot2/clear_cache 
 ./run_bankshot2 ${XDDEXEC} ${XDDFLAGS} -targets 1 /mnt/ramdisk/test1 -rwratio ${RWRATIO} | tee >> ${LOGFILE}
 done
 done
@@ -37,7 +38,9 @@ XDDFLAGS="-mbytes ${WORKLOAD_SIZE} -minall -verbose -noproclock -nomemlock -runt
 for RWRATIO in ${RWRATIOS}; do
 for CYCLE in ${CYCLES}; do
 echo "xdd: Workload ${WORKLOAD_SIZE}MB, Reqsize ${REQ_SIZE}, File range ${FILE_RANGE}MB, Thread ${THREAD}, RWratio ${RWRATIO}"  
+#~/bankshot2/clear_cache 
 ./run_bankshot2 ${XDDEXEC} ${XDDFLAGS} -targets 1 /mnt/ramdisk/test1 -rwratio ${RWRATIO} | tee >> ${LOGFILE}
 done
 done
 
+#./run_bankshot2 ${XDDEXEC} ${XDDFLAGS} -targets 1 /mnt/ramdisk/test1 -rwratio 100 | tee >> ${LOGFILE}

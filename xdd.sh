@@ -28,7 +28,7 @@ XDDFLAGS="-mbytes ${WORKLOAD_SIZE} -minall -verbose -noproclock -nomemlock -runt
 for RWRATIO in ${RWRATIOS}; do
 for CYCLE in ${CYCLES}; do
 echo "xdd: Workload ${WORKLOAD_SIZE}MB, Reqsize ${REQ_SIZE}, File range ${FILE_RANGE}MB, Thread ${THREAD}, RWratio ${RWRATIO}"  
-${XDDEXEC} ${XDDFLAGS} -targets 1 /mnt/ramdisk/test1 -rwratio ${RWRATIO} | tee >> ${LOGFILE}
+${XDDEXEC} ${XDDFLAGS} -targets 1 /mnt/ramdisk1/test1 -rwratio ${RWRATIO} | tee >> ${LOGFILE}
 done
 done
 
@@ -37,7 +37,7 @@ XDDFLAGS="-mbytes ${WORKLOAD_SIZE} -minall -verbose -noproclock -nomemlock -runt
 for RWRATIO in ${RWRATIOS}; do
 for CYCLE in ${CYCLES}; do
 echo "xdd: Workload ${WORKLOAD_SIZE}MB, Reqsize ${REQ_SIZE}, File range ${FILE_RANGE}MB, Thread ${THREAD}, RWratio ${RWRATIO}"  
-${XDDEXEC} ${XDDFLAGS} -targets 1 /mnt/ramdisk/test1 -rwratio ${RWRATIO} | tee >> ${LOGFILE}
+${XDDEXEC} ${XDDFLAGS} -targets 1 /mnt/ramdisk1/test1 -rwratio ${RWRATIO} | tee >> ${LOGFILE}
 done
 done
 
