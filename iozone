@@ -1,5 +1,11 @@
 #!/bin/bash 
 
+if [ $# -le 0 ]; then
+  echo "Format: Bandwidth"
+  exit
+fi  
+
+Bandwidth=$1
 LOGDIR="log"
 
 LOGFILE="${LOGDIR}/iozone"
@@ -12,7 +18,10 @@ echo "Starting run"
 
 sync
 sleep 2
-~/benchmarks/iozone3_424/src/current/iozone -f /mnt/ramdisk1/test1 -a -w -+N -y 1k -q 4m -s 1g -i 0 -i 1 -i 2 -i 3 -i 4 -i 5 | tee ${LOGFILE} 
-#~/benchmarks/iozone3_424/src/current/iozone -f /mnt/ramdisk/test1 -a -w -r 4k -s 1g -i 0 -i 1  
 
+if [ ${Bandwidth} -eq 0 ]; then
+  ~/benchmarks/iozone3_424/src/current/iozone -f /mnt/ramdisk1/test1 -a -w -+N -y 1k -q 4m -s 1g -i 0 -i 1 -i 2 -i 3 -i 4 -i 5 | tee ${LOGFILE}
+else
+  ~/benchmarks/iozone3_424/src/current/iozone -t 4 -F /mnt/ramdisk1/test1 /mnt/ramdisk1/test2 /mnt/ramdisk1/test3 /mnt/ramdisk1/test4 -w -+N -r 4k -s 256m | tee ${LOGFILE} 
+fi
 
