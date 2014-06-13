@@ -18,7 +18,7 @@ FILE_RANGE=$((${FILE_RANGE}*1024*1024/${REQ_SIZE}))
 
 LOGDIR="log"
 
-LOGFILE="${LOGDIR}/xdd_bankshot2"
+LOGFILE="${LOGDIR}/xdd_bankshot2-ext2"
 
 XDDEXEC=~/benchmarks/xdd/bin/xdd.linux
 

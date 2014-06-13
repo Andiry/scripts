@@ -8,7 +8,7 @@ fi
 Bandwidth=$1
 LOGDIR="log"
 
-LOGFILE="${LOGDIR}/iozone_bankshot2"
+LOGFILE="${LOGDIR}/iozone_bankshot2-ext2"
 
 #. mount_fs /dev/monetaa
 
@@ -20,7 +20,7 @@ sync
 sleep 1
 
 if [ ${Bandwidth} -eq 0 ]; then
-  ./run_bankshot2 ~/benchmarks/iozone3_424/src/current/iozone -f /mnt/ramdisk/test1 -a -w -+N -y 1k -q 4m -s 1g -i 0 -i 1 -i 2 -i 3 -i 4 -i 5 | tee ${LOGFILE}
+  ./run_bankshot2 ~/benchmarks/iozone3_424/src/current/iozone -f /mnt/ramdisk/test1 -a -w -+N -y 1k -q 4m -s 1g -i 0 -i 1 -i 2 -i 3 -i 4 -i 5 | tee >> ${LOGFILE}
 else
-  ./run_bankshot2 ~/benchmarks/iozone3_424/src/current/iozone -t 4 -F /mnt/ramdisk/test1 /mnt/ramdisk/test2 /mnt/ramdisk/test3 /mnt/ramdisk/test4 -w -+N -r 4k -s 256m | tee ${LOGFILE} 
+  ./run_bankshot2 ~/benchmarks/iozone3_424/src/current/iozone -t 4 -F /mnt/ramdisk/test1 /mnt/ramdisk/test2 /mnt/ramdisk/test3 /mnt/ramdisk/test4 -w -+N -r 4k -s 256m | tee >> ${LOGFILE} 
 fi
