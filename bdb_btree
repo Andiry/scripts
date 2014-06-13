@@ -1,0 +1,18 @@
+#!/bin/bash
+
+LOGDIR="log"
+
+LOGFILE="${LOGDIR}/bdb-btree-xfs"
+
+rm -rf /tmp/__db.00*
+
+FOOTPRINT=100000
+THREADS=1
+RUNTIME=120
+RD_KB=$[16*1024*1024]
+
+echo "copied file and remounted "
+#cd /media/root/New_Volume2/footprint100000
+
+~/benchmarks/BerkeleyDB/BDB/Multi/BTree.exe btree_run -rt ${RUNTIME} -tc ${THREADS} -foot ${FOOTPRINT} -file /media/root/New_Volume2/footprint100000 -reload #>> ${LOGFILE} 2>&1
+
