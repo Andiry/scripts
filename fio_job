@@ -1,0 +1,10 @@
+[read]
+ioengine=sync
+iodepth=1
+rw=read
+bs=4k
+direct=0
+size=1g
+numjobs=1
+pre_read=1
+filename=/mnt/ramdisk/test1
