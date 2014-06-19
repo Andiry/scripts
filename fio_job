@@ -7,4 +7,5 @@ direct=0
 size=1g
 numjobs=1
 pre_read=1
+thread
 filename=/mnt/ramdisk/test1
