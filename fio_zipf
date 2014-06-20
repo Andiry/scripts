@@ -1,0 +1,15 @@
+[job]
+ioengine=sync
+gtod_reduce=1
+iodepth=1
+rw=randrw
+rwmixread=50
+norandommap
+bs=4k
+direct=0
+size=1g
+numjobs=4
+pre_read=1
+thread
+group_reporting=1
+filename=/mnt/ramdisk/test1
