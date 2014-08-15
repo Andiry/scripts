@@ -23,11 +23,11 @@
 # Use is subject to license terms.
 #
 
-set $dir=/mnt/ramdisk
+set $dir=/mnt/ramdisk/filebench
 set $nfiles=1000
 set $meandirwidth=20
 set $meanfilesize=128k
-set $nthreads=50
+set $nthreads=1
 set $iosize=1m
 set $meanappendsize=16k
 

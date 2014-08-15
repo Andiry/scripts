@@ -2,17 +2,17 @@
 
 LOGDIR="log"
 
-LOGFILE="${LOGDIR}/bdb-btree-xfs"
+LOGFILE="${LOGDIR}/bdb-btree-bankshot2-ext4"
 
 rm -rf /tmp/__db.00*
 
 FOOTPRINT=100000
-THREADS=1
-RUNTIME=120
+THREADS=8
+RUNTIME=60
 RD_KB=$[16*1024*1024]
 
 echo "copied file and remounted "
 #cd /media/root/New_Volume2/footprint100000
 
-./run_bankshot2 ~/benchmarks/BerkeleyDB/BDB/Multi/BTree.exe btree_run -rt ${RUNTIME} -tc ${THREADS} -foot ${FOOTPRINT} -file /mnt/ramdisk/footprint100000 -reload #>> ${LOGFILE} 2>&1
+./run_bankshot2 ~/benchmarks/BerkeleyDB/BDB/Multi/BTree.exe btree_run -rt ${RUNTIME} -tc ${THREADS} -foot ${FOOTPRINT} -file /mnt/ramdisk/footprint100000 -reload >> ${LOGFILE} 2>&1
 
