@@ -2,12 +2,12 @@
 
 #export WORKLOADS="fileserver varmail webproxy webserver"
 CYCLES="1"
-WORKLOADS="fileserver"
+WORKLOADS="webserver"
 
 #THREADS="1 2 4 8 16 100"
 THREADS="1"
 #SIZES="16k 128k 512k 2m 4m"
-SIZES="128k"
+SIZES="2m"
 
 LOGDIR="log/filebench/bankshot2"
 
