@@ -1,0 +1,40 @@
+#!/bin/bash 
+
+#export WORKLOADS="fileserver varmail webproxy webserver"
+WORKLOADS="fileserver"
+CYCLES="1"
+
+#THREADS="1 2 4 8 16 100"
+THREADS="1"
+#SIZES="16k 128k 512k 2m 4m"
+SIZES="128k"
+
+LOGDIR="log/filebench/nvp"
+
+for WORKLOAD in ${WORKLOADS}; do
+for THREAD in ${THREADS}; do
+for FILESIZE in ${SIZES}; do
+for CYCLE in ${CYCLES}; do
+	echo "Filebench workload ${WORKLOAD} running with nvp"
+	echo "Cycle ${CYCLE}, thread ${THREAD}"
+	echo "Starting run"
+	export LOGFILE="${LOGDIR}/${WORKLOAD}_${THREAD}_${FILESIZE}_${CYCLE}"
+	echo "Log file: ${LOGFILE}"
+	echo "===============================================================" >> ${LOGFILE}
+	echo "===============================================================" >> ${LOGFILE}
+	echo "===============================================================" >> ${LOGFILE}
+	echo "===============================================================" >> ${LOGFILE}
+
+	rm -rf /mnt/ramdisk/logfiles
+	rm -rf /mnt/ramdisk/bigfileset
+	sync
+	sleep 2
+	export TARGET_FILE="${WORKLOAD}/${WORKLOAD}_${THREAD}_${FILESIZE}.f"
+	echo "Target file: ${TARGET_FILE}"
+	. execute_filebench_nvp
+
+done
+done
+done
+done
+
