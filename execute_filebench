@@ -1,0 +1,3 @@
+#!/bin/bash 
+
+~/benchmarks/filebench-1.4.9.1/filebench -f filebench_models/${TARGET_FILE} >> ${LOGFILE} 
