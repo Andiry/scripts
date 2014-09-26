@@ -15,7 +15,8 @@ def main():
 	print "dir:", dir
 	
 	threads = [1, 2, 4, 8, 16, 100, 1000]
-	sizes = ["16k", "32k", "128k", "512k", "2m", "4m"]
+#	sizes = ["16k", "32k", "128k", "512k", "2m", "4m"]
+	sizes = ["8m"]
 
 	for thread in threads:
 		for size in sizes:

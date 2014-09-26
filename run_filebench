@@ -1,10 +1,11 @@
 #!/bin/bash 
 
-export WORKLOADS="fileserver varmail webproxy webserver"
-#WORKLOADS="webproxy"
+#export WORKLOADS="fileserver varmail webproxy webserver"
+WORKLOADS="videoserver"
 CYCLES="1"
 THREADS="1 2 4 8 16 100"
-SIZES="16k 128k 512k 2m 4m"
+#SIZES="16k 128k 512k 2m 4m"
+SIZES="2m"
 
 LOGDIR="log/filebench/ext4"
 
@@ -28,6 +29,7 @@ for CYCLE in ${CYCLES}; do
 	export TARGET_FILE="${WORKLOAD}/${WORKLOAD}_${THREAD}_${FILESIZE}.f"
 	echo "Target file: ${TARGET_FILE}"
 	. execute_filebench
+	cat ${LOGFILE} |grep "Summary"
 
 done
 done

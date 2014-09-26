@@ -7,7 +7,7 @@ LOGFILE="${LOGDIR}/bdb-btree-ext4"
 rm -rf /tmp/__db.00*
 
 FOOTPRINT=100000
-THREADS=8
+THREADS=2
 RUNTIME=60
 RD_KB=$[16*1024*1024]
 

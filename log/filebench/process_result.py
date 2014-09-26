@@ -16,7 +16,7 @@ def main():
 	
 	workloads = ["fileserver", "varmail", "webproxy", "webserver", "videoserver"]
 	threads = [1, 2, 4, 8, 16, 100, 1000]
-	sizes = ["16k", "32k", "128k", "512k", "2m", "4m"]
+	sizes = ["16k", "32k", "128k", "512k", "2m", "4m", "8m"]
 	cycle = '1'
 
 	output = dir + ".csv"
