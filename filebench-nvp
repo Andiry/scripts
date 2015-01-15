@@ -1,0 +1,22 @@
+#!/bin/bash 
+
+#export WORKLOADS="fileserver varmail webproxy webserver"
+WORKLOADS="webserver"
+
+LOGDIR="log"
+
+LOGFILE="${LOGDIR}/filebench-nvp"
+
+#. mount_fs /dev/monetaa
+
+#. xdd_setup_cache 
+for WORKLOAD in ${WORKLOADS}; do
+	echo "Filebench workload ${WORKLOAD}"
+	echo "Starting run"
+
+	sync
+	sleep 2
+	./run_nvp filebench -f filebench_models/${WORKLOAD}.f #>> ${LOGFILE} 
+
+done
+

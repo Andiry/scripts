@@ -1,0 +1,30 @@
+#!/bin/bash 
+
+export FILE_NAME=/mnt/ramdisk/test1
+export FILE_SIZE=1024
+export REQ_SIZE=4k
+export IO_SIZE=$[${WORKLOAD}/${THREAD}]m
+export THETA=${THETA}
+export RW_RATIO=100
+export ENGINE=sync
+export WARMUP_RATIO=${WARMUP_RATIO}
+if [ "$DIST" == "" ]; then 
+	export DIST=zipf
+fi	
+
+echo "----------------PRERUN---------------------" >> ${STATSFILE}
+
+
+echo "RW_RATIO=${RW_RATIO},THETA=${THETA},FILE_SIZE=${FILE_SIZE},BACKING_STORE=${BACKING_STORE},WORKLOAD_SIZE=${FILE_NAME}" >> $STATSFILE
+
+export FILL_SIZE=16384
+export FILL_BLOCK=1048576
+
+echo "begin test"
+#run test
+#$FIOPATH/fio --name=cache_test --direct=1 --size=100% --filesize=${FILE_SIZE}m --blocksize=${REQ_SIZE} --ioengine=${ENGINE} --rw=randrw --rwmixread=${RW_RATIO} --numjob=${THREAD} --group_reporting=1 --filename=${FILE_NAME} --thread --norandommap --randrepeat=1 --ramp_time=300 --io_count=4194304 --random_generator=lfsr --minimal >> ${LOGFILE}
+$FIOPATH/fio --name=cache_test --direct=0 --size=100% --filesize=${FILE_SIZE}m --blocksize=${REQ_SIZE} --ioengine=${ENGINE} --rw=randrw --rwmixread=${RW_RATIO} --numjob=${THREAD} --group_reporting=1 --filename=${FILE_NAME} --norandommap --randrepeat=1 --ramp_time=300 --io_count=4194304 --random_generator=lfsr --minimal >> ${LOGFILE}
+#time_based
+exit
+
+

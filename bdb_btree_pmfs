@@ -1,0 +1,25 @@
+#!/bin/bash
+
+LOGDIR="log"
+
+rm -rf /tmp/__db.00*
+rm -rf /mnt/ramdisk/*
+cp -r /media/root/New_Volume/Test_files/footprint100000-backup /mnt/ramdisk/footprint100000
+
+sleep 1
+
+FOOTPRINT=100000
+THREADS=1
+RUNTIME=30
+RD_KB=$[16*1024*1024]
+
+LOGFILE="${LOGDIR}/bdb-btree-pmfs-${THREADS}"
+
+echo "copied file and remounted "
+#cd /media/root/New_Volume2/footprint100000
+
+#~/benchmarks/BerkeleyDB/BDB/Multi/BTree.exe btree_run -rt ${RUNTIME} -tc ${THREADS} -foot ${FOOTPRINT} -file /media/root/New_Volume2/footprint100000 -reload #>> ${LOGFILE} 2>&1
+~/benchmarks/BerkeleyDB/BDB/Multi/BTree.exe btree_run -rt ${RUNTIME} -tc ${THREADS} -foot ${FOOTPRINT} -file /mnt/ramdisk/footprint100000 -reload >> ${LOGFILE} 2>&1
+
+cat ${LOGFILE} |grep "Sys"
+cat ${LOGFILE} |grep "btree_run"
