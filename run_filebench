@@ -1,11 +1,11 @@
 #!/bin/bash 
 
 #export WORKLOADS="fileserver varmail webproxy webserver"
-WORKLOADS="videoserver"
+WORKLOADS="fileserver"
 CYCLES="1"
-THREADS="1 2 4 8 16 100"
+THREADS="2"
 #SIZES="16k 128k 512k 2m 4m"
-SIZES="2m"
+SIZES="128k"
 
 LOGDIR="log/filebench/ext4"
 
