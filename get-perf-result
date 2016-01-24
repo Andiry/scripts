@@ -1,0 +1,31 @@
+#!/bin/bash 
+
+if [ $# -le 0 ]; then
+  echo "Format: Filename"
+  exit
+fi  
+
+Filename=$1
+Unfold="${Filename}.unfold"
+Fold="${Filename}.fold"
+Svg="${Filename}.svg"
+Dir="/root/Andiry/FlameGraph"
+Collapse="${Dir}/stackcollapse-perf.pl"
+Flamegraph="${Dir}/flamegraph.pl"
+
+echo "Get perf unfold..."
+
+perf script -i perf.data &> ${Unfold}
+
+echo "Get perf folded..."
+
+${Collapse} ${Unfold} &> ${Fold}
+
+echo "Get svg..."
+
+${Flamegraph} ${Fold} > ${Svg}
+
+scp -P 425 ${Svg} root@132.239.17.134:~/Copy/
+
+echo "Done."
+
