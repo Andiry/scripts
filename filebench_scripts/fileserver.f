@@ -33,9 +33,9 @@ set $meanappendsize=16k
 
 define fileset name=bigfileset,path=$dir,size=$meanfilesize,entries=$nfiles,dirwidth=$meandirwidth,prealloc=80
 
-define process name=filereader,instances=$nthreads
+define process name=filereader,instances=1
 {
-  thread name=filereaderthread,memsize=1m,instances=1
+  thread name=filereaderthread,memsize=1m,instances=$nthreads
   {
     flowop createfile name=createfile1,filesetname=bigfileset,fd=1
     flowop writewholefile name=wrtfile1,srcfd=1,fd=1,iosize=$iosize
@@ -50,6 +50,7 @@ define process name=filereader,instances=$nthreads
     flowop statfile name=statfile1,filesetname=bigfileset
   }
 }
+run 60
 
 echo  "File-server Version 3.0 personality successfully loaded"
 usage "Usage: set \$dir=<dir>"
@@ -61,4 +62,3 @@ usage "       set \$iosize=<size>  defaults to $iosize"
 usage "       set \$meandirwidth=<size> defaults to $meandirwidth"
 usage "       run runtime (e.g. run 60)"
 
-run 60
