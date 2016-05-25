@@ -52,7 +52,8 @@ define process name=filereader,instances=1
     flowop closefile name=closefile4,fd=1
   }
 }
-run 60
+
+psrun -10 7200
 
 echo  "Varmail Version 3.0 personality successfully loaded"
 usage "Usage: set \$dir=<dir>"

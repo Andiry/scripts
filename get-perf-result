@@ -25,8 +25,6 @@ echo "Get svg..."
 
 ${Flamegraph} ${Fold} > ${Svg}
 
-scp -P 425 ${Svg} root@132.239.17.134:~/Copy/
-
 echo "Delete temporary files..."
 
 rm -rf ${Unfold}
