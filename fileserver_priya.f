@@ -50,6 +50,7 @@ define process name=filereader,instances=$nthreads
     flowop statfile name=statfile1,filesetname=bigfileset
   }
 }
+run 60
 
 echo  "File-server Version 3.0 personality successfully loaded"
 usage "Usage: set \$dir=<dir>"
@@ -61,4 +62,3 @@ usage "       set \$iosize=<size>  defaults to $iosize"
 usage "       set \$meandirwidth=<size> defaults to $meandirwidth"
 usage "       run runtime (e.g. run 60)"
 
-run 60

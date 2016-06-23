@@ -24,7 +24,7 @@
 #
 
 set $dir=/mnt/ramdisk
-set $nfiles=500000
+set $nfiles=100000
 set $meandirwidth=20
 set $meanfilesize=64k
 set $nthreads=50
@@ -34,9 +34,9 @@ set $meanappendsize=8k
 define fileset name=bigfileset,path=$dir,size=$meanfilesize,entries=$nfiles,dirwidth=$meandirwidth,prealloc=100
 define fileset name=logfiles,path=$dir,size=$meanfilesize,entries=1,dirwidth=$meandirwidth,prealloc
 
-define process name=filereader,instances=$nthreads
+define process name=filereader,instances=1
 {
-  thread name=filereaderthread,memsize=10m,instances=1
+  thread name=filereaderthread,memsize=10m,instances=$nthreads
   {
     flowop openfile name=openfile1,filesetname=bigfileset,fd=1
     flowop readwholefile name=readfile1,fd=1,iosize=$iosize

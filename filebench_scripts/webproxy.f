@@ -59,7 +59,7 @@ define process name=proxycache,instances=$nthreads
     flowop opslimit name=limit
   }
 }
-run 50
+run 60
 echo  "Web proxy-server Version 3.0 personality successfully loaded"
 usage "Usage: set \$dir=<dir>"
 usage "       set \$meanfilesize=<size>    defaults to $meanfilesize"
